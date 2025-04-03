@@ -1,0 +1,21 @@
+#!/bin/sh
+# List system tools and pass selection to fuzzel
+choice=$(printf "%s\n" \
+    "󰂯 Bluetooth (blueman-manager)" \
+    "󰖩 Network (nm-connection-editor)" \
+    "󰓃 Sound (pavucontrol)" \
+    "󰍛 Display (wdisplays)" \
+    "󰘓 Htop (htop)" \
+    "󰹑 Nvtop (nvtop)" \
+    | fuzzel --dmenu --prompt="System Tools  ")
+
+# Launch the selected tool
+case "$choice" in
+    *Bluetooth*) blueman-manager & ;;
+    *Network*) nm-connection-editor & ;;
+    *Sound*) pavucontrol & ;;
+    *Display*) wdisplays & ;;  # Alternative: wlr-randr, kanshi
+    *Nvtop*) alacritty --title "st-nvtop" -e nvtop & ;;
+    *Htop*) alacritty --title "st-htop" -e htop & ;;
+
+esac

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=System Tools
+Comment=Launch system management apps
+Exec=/usr/local/bin/system-tools
+Terminal=false
+Type=Application
+Icon=preferences-desktop
+Categories=System;

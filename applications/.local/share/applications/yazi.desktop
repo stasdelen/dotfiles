@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Yazi
+Comment=Launch File Manager
+Exec=alacritty -t "st-yazi" -e yazi
+Terminal=false
+Type=Application
+Icon=folder
+Categories=System;

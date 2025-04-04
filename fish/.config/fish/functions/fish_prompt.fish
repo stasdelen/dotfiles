@@ -68,7 +68,19 @@ function fish_prompt
         set arrow_color "$red"
     end
 
-    set -l arrow "$arrow_color➜"
+    # Mode-based arrow
+    set -l arrow
+    switch $fish_bind_mode
+        case default
+            set arrow "$arrow_color⇒"  # block cursor mode
+        case insert
+            set arrow "$arrow_color➜"  # line cursor mode
+        case visual
+            set arrow "$arrow_color⯈"  # visual mode
+        case '*'
+            set arrow "$arrow_color➜"
+    end
+
     if fish_is_root_user
         set arrow "$arrow_color#"
     end
@@ -78,7 +90,7 @@ function fish_prompt
     set -l repo_info
     if set -l repo_type (_repo_type)
         set -l repo_branch $red(_repo_branch_name $repo_type)
-        set repo_info "$blue $repo_type:($repo_branch$blue)"
+        set repo_info "$blue($repo_branch$blue)"
 
         if _is_repo_dirty $repo_type
             set -l dirty "$yellow ✗"

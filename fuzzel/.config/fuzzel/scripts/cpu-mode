@@ -1,0 +1,57 @@
+#!/bin/bash
+# CPU Mode Selector (Fuzzel + Sway) - Auto-detects valid modes
+
+# Get valid modes from the kernel
+VALID_MODES=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors)
+CURRENT_MODE=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
+
+# Set CPU mode (with validation)
+set_mode() {
+    local mode="$1"
+    if ! grep -qw "$mode" <<< "$VALID_MODES"; then
+        notify-send -u critical "CPU Mode" "Invalid mode: $mode"
+        exit 1
+    fi
+    echo "$mode" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor >/dev/null && \
+        notify-send -u low "CPU Mode" "Switched to: $mode"
+}
+
+# Fuzzel menu (only show valid modes)
+show_menu() {
+    # Map modes to icons
+    declare -A icons=(
+        ["performance"]="󰓤"
+        ["powersave"]="󰾄"
+        ["schedutil"]="󰾆"
+        ["ondemand"]="󰾅"
+        ["conservative"]="󰾇"
+        ["userspace"]="󰀹"
+    )
+
+    # Filter valid modes for the menu
+    MENU_ITEMS=()
+    for mode in $VALID_MODES; do
+        MENU_ITEMS+=("${icons[$mode]:-} ${mode^}")
+    done
+
+    choice=$(printf "%s\n" "${MENU_ITEMS[@]}" "󰅂 Current: $CURRENT_MODE" | \
+             fuzzel --dmenu --prompt="CPU Mode  ")
+
+    case "$choice" in
+        *Performance*)  set_mode "performance" ;;
+        *Powersave*)    set_mode "powersave" ;;
+        *Schedutil*)    set_mode "schedutil" ;;
+        *Ondemand*)     set_mode "ondemand" ;;
+        *Conservative*) set_mode "conservative" ;;
+        *Userspace*)    set_mode "userspace" ;;
+        *Current*)      notify-send -t 2000 "CPU Mode" "Current: $CURRENT_MODE" ;;
+        *)              exit 0 ;;
+    esac
+}
+
+# Main logic
+if [[ -z "$1" ]]; then
+    show_menu
+else
+    set_mode "$1"
+fi

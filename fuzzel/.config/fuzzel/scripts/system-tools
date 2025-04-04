@@ -5,6 +5,7 @@ choice=$(printf "%s\n" \
     "󰖩 Network (nm-connection-editor)" \
     "󰓃 Sound (pavucontrol)" \
     "󰍛 Display (wdisplays)" \
+    " CPU Mode" \
     "󰘓 Htop (htop)" \
     "󰹑 Nvtop (nvtop)" \
     | fuzzel --dmenu --prompt="System Tools  ")
@@ -15,6 +16,7 @@ case "$choice" in
     *Network*) nm-connection-editor & ;;
     *Sound*) pavucontrol & ;;
     *Display*) wdisplays & ;;  # Alternative: wlr-randr, kanshi
+    *CPU*) ~/.config/fuzzel/scripts/cpu-mode ;;
     *Nvtop*) alacritty --title "st-nvtop" -e nvtop & ;;
     *Htop*) alacritty --title "st-htop" -e htop & ;;
 

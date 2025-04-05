@@ -11,6 +11,9 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+# Track if any errors occur
+ERROR_OCCURRED=0
+
 # ------- Functions -------
 
 # Create symlink with backup handling
@@ -19,19 +22,31 @@ link_file() {
   local dest="$2"
 
   # Create parent directory if needed
-  mkdir -p "$(dirname "$dest")"
+  mkdir -p "$(dirname "$dest")" || {
+    echo -e "${RED}Error creating parent directory for ${dest}${NC}"
+    return 1
+  }
 
   # Handle existing files
   if [ -e "$dest" ] || [ -L "$dest" ]; then
     if [ ! -d "$BACKUP_DIR" ]; then
-      mkdir -p "$BACKUP_DIR"
+      mkdir -p "$BACKUP_DIR" || {
+        echo -e "${RED}Error creating backup directory ${BACKUP_DIR}${NC}"
+        return 1
+      }
     fi
     echo -e "${YELLOW}Backing up ${dest} to ${BACKUP_DIR}${NC}"
-    mv "$dest" "$BACKUP_DIR/"
+    mv "$dest" "$BACKUP_DIR/" || {
+      echo -e "${RED}Error backing up ${dest}${NC}"
+      return 1
+    }
   fi
 
   echo -e "${GREEN}Linking ${src} to ${dest}${NC}"
-  ln -s "$src" "$dest"
+  ln -s "$src" "$dest" || {
+    echo -e "${RED}Error linking ${src} to ${dest}${NC}"
+    return 1
+  }
 }
 
 # ------- Main Installation -------
@@ -44,9 +59,13 @@ echo ""
 # List of packages to install (excluding sway-related stuff)
 PACKAGES=(
   "alacritty"
+  "applications"
   "fish"
+  "fuzzel"
   "nvim"
   "tmux"
+  "vifm"
+  "waybar"
   "yazi"
 )
 
@@ -81,7 +100,7 @@ for package in "${PACKAGES[@]}"; do
       target_path="${TARGET_DIR}/${rel_path}"
     fi
 
-    link_file "$file" "$target_path"
+    link_file "$file" "$target_path" || ERROR_OCCURRED=1
   done < <(find "$package_dir" -type f -not -path '*/.git/*' -print0)
 done
 
@@ -89,11 +108,22 @@ done
 
 # Set strict permissions for sensitive files
 if [ -f "${TARGET_DIR}/.ssh/config" ]; then
-  chmod 600 "${TARGET_DIR}/.ssh/config"
+  chmod 600 "${TARGET_DIR}/.ssh/config" || {
+    echo -e "${RED}Error setting permissions for ~/.ssh/config${NC}"
+    ERROR_OCCURRED=1
+  }
   echo -e "${GREEN}Set strict permissions for ~/.ssh/config${NC}"
 fi
 
 echo -e "\n${GREEN}Installation complete!${NC}"
 if [ -d "$BACKUP_DIR" ]; then
   echo -e "Backups were saved to ${YELLOW}${BACKUP_DIR}${NC}"
+fi
+
+# Exit with proper status code
+if [ "$ERROR_OCCURRED" -eq 1 ]; then
+  echo -e "${RED}Some errors occurred during installation${NC}"
+  exit 1
+else
+  exit 0
 fi

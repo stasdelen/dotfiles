@@ -59,13 +59,10 @@ echo ""
 # List of packages to install (excluding sway-related stuff)
 PACKAGES=(
   "alacritty"
-  "applications"
   "fish"
-  "fuzzel"
   "nvim"
   "tmux"
   "vifm"
-  "waybar"
   "yazi"
 )
 

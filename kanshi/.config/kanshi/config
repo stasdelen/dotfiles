@@ -1,0 +1,13 @@
+profile home {
+	output eDP-1 position 340,1080
+	output 'LG Electronics LG ULTRAWIDE 0x0000CA30' mode 2560x1080@75Hz
+	exec swaymsg workspace 1, move workspace to eDP-1
+	exec swaymsg workspace 2, move workspace to "'LG Electronics LG ULTRAWIDE 0x0000CA30'"
+}
+
+profile home2 {
+	output eDP-1 position 340,1080
+	output 'LG Electronics LG ULTRAWIDE 0x0000CA30' mode 2560x1080@75Hz
+	exec swaymsg workspace 1, move workspace to eDP-1
+	exec swaymsg workspace 2, move workspace to "'LG Electronics LG ULTRAWIDE 0x0000CA30'"
+}

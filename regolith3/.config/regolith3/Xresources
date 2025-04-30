@@ -1,0 +1,19 @@
+regolith.wallpaper.file: /home/salih/Pictures/Wallpapers/Sfondo_no_logo.jpg
+regolith.lockscreen.wallpaper.file: /home/salih/Pictures/Wallpapers/Sfondo_no_logo.jpg
+gtk.theme_name: Yaru-blue-dark
+gtk.icon_theme_name: Yaru-blue-dark
+gnome.wm.theme: Yaru-blue-dark
+gnome.gtk.theme: Yaru-blue-dark
+gnome.gtk.key-theme: Yaru-blue-dark
+wm.theme: Yaru-blue-dark
+gnome.terminal.use-transparent-background: true
+gnome.terminal.background-transparency-percent: 50 
+gnome.terminal.scrollbar: never
+gnome.terminal.font:    BitstreamVeraSansMono Nerd Font 9 
+gtk.document_font_name: Sans 9
+gtk.font_name:  Bitstream Vera Sans 9 
+gtk.monospace_font_name:        BitstreamVeraSansMono Nerd Font 9 
+i3xrocks.value.font:    BitstreamVeraSansMono Nerd Font 9 
+wm.bar.font:    BitstreamVeraSansMono Nerd Font 9 
+!regolith.look.path: /usr/share/regolith-look/i3-default
+regolith.look.path: /usr/share/regolith-look/default

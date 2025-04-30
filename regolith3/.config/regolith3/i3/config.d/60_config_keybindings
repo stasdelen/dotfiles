@@ -1,0 +1,21 @@
+###############################################################################
+# System Management
+###############################################################################
+
+
+for_window [class="^Nautilus$"] floating enable
+for_window [class="^Eog$"] floating enable  # GNOME image viewer
+for_window [class="^Evince$"] floating enable  # GNOME PDF viewer
+for_window [class="^File-roller$"] floating enable  # Archive manager
+for_window [class="^Gnome-calculator$"] floating enable  # Calculator
+for_window [class="gnome-*"]        floating enable 
+for_window [class="^Slack$"]        floating enable 
+for_window [class="^Spotify$"]        floating enable 
+for_window [class="^Gnome-control-center$"]        floating enable 
+
+# area screenshot
+bindsym $mod+Print exec gnome-screenshot -a
+# kazam screencast 
+bindsym $mod+shift+Print exec kazam 
+
+

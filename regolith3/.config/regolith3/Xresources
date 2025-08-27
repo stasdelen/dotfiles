@@ -1,5 +1,7 @@
-regolith.wallpaper.file: /home/salih/Pictures/Wallpapers/Sfondo_no_logo.jpg
-regolith.lockscreen.wallpaper.file: /home/salih/Pictures/Wallpapers/Sfondo_no_logo.jpg
+regolith.wallpaper.file: /home/salih/.config/wallpapers/batman.jpg
+regolith.lockscreen.wallpaper.file: /home/salih/.config/wallpapers/batman.jpg
+regolith.wallpaper.options: scaled
+regolith.lockscreen.wallpaper.options: scaled
 gtk.theme_name: Yaru-blue-dark
 gtk.icon_theme_name: Yaru-blue-dark
 gnome.wm.theme: Yaru-blue-dark
@@ -15,5 +17,5 @@ gtk.font_name:  Bitstream Vera Sans 9
 gtk.monospace_font_name:        BitstreamVeraSansMono Nerd Font 9 
 i3xrocks.value.font:    BitstreamVeraSansMono Nerd Font 9 
 wm.bar.font:    BitstreamVeraSansMono Nerd Font 9 
-!regolith.look.path: /usr/share/regolith-look/i3-default
-regolith.look.path: /usr/share/regolith-look/default
+!regolith.look.path: /usr/share/regolith-look/default
+regolith.look.path: /usr/share/regolith-look/i3-default

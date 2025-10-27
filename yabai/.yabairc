@@ -19,6 +19,7 @@ yabai -m config mouse_modifier alt
 yabai -m config mouse_action1 move
 # set modifier + right-click drag to resize window
 yabai -m config mouse_action2 resize
+
 # ──────────────────────────────────────────────────────────────────────────────
 # 3) Window Appearance
 # ──────────────────────────────────────────────────────────────────────────────
@@ -46,29 +47,31 @@ yabai -m config window_gap        0  # gap between windows :contentReference[oai
 # ──────────────────────────────────────────────────────────────────────────────
 # 5) Application Rules
 # ──────────────────────────────────────────────────────────────────────────────
-yabai -m rule --add app="^System Preferences$" manage=off  
-yabai -m rule --add app="^Archive Utility$"   manage=off  
-yabai -m rule --add app="^Logi Options+$"     manage=off  
-yabai -m rule --add app="^Alfred Preferences$" manage=off  # ignore untiltable apps :contentReference[oaicite:17]{index=17}  
-yabai -m rule --add app="^Finder$"             manage=off
-yabai -m rule --add app="^Photos$"             manage=off
-yabai -m rule --add app="^Notes$"              manage=off
-yabai -m rule --add app="^Reminders$"          manage=off
-yabai -m rule --add app="^Mail$"               manage=off
-yabai -m rule --add app="^Maps$"               manage=off
-yabai -m rule --add app="^Spotify$"            manage=off
-yabai -m rule --add app="WhatsApp"           manage=off
-yabai -m rule --add app="^Messages$"           manage=off
-yabai -m rule --add app="^Slack$"           manage=off
-yabai -m rule --add app="^Calendar$"           manage=off
-yabai -m rule --add app="^Preview$"            manage=off
-yabai -m rule --add app="^Calculator$"         manage=off
-yabai -m rule --add app="^Contacts$"           manage=off
-yabai -m rule --add app="^FaceTime$"           manage=off
-yabai -m rule --add app="^Activity Monitor$"   manage=off
-yabai -m rule --add app="^System Settings$"    manage=off
-yabai -m rule --add app="^App Store$"          manage=off
-yabai -m rule --add app="^Bitwarden$"          manage=off
-yabai -m rule --add app="^Karabiner-Elements$"          manage=off
-yabai -m rule --add app="^Parallels Desktop Preferences$"          manage=off
-yabai -m rule --add app="^Parallels Desktop$"          manage=off
+yabai -m rule --add app="^System Preferences$"            manage=off  
+yabai -m rule --add app="^Archive Utility$"               manage=off  
+yabai -m rule --add app="^Logi Options+$"                 manage=off  
+yabai -m rule --add app="^Finder$"                        manage=off
+yabai -m rule --add app="^Photos$"                        manage=off
+yabai -m rule --add app="^Notes$"                         manage=off
+yabai -m rule --add app="^Reminders$"                     manage=off
+yabai -m rule --add app="^Mail$"                          manage=off
+yabai -m rule --add app="^Maps$"                          manage=off
+yabai -m rule --add app="^Spotify$"                       manage=off
+yabai -m rule --add app="WhatsApp"                        manage=off
+yabai -m rule --add app="^Messages$"                      manage=off
+yabai -m rule --add app="^Slack$"                         manage=off
+yabai -m rule --add app="^Calendar$"                      manage=off
+yabai -m rule --add app="^Preview$"                       manage=off
+yabai -m rule --add app="^Calculator$"                    manage=off
+yabai -m rule --add app="^Contacts$"                      manage=off
+yabai -m rule --add app="^FaceTime$"                      manage=off
+yabai -m rule --add app="^Activity Monitor$"              manage=off
+yabai -m rule --add app="^System Settings$"               manage=off
+yabai -m rule --add app="^App Store$"                     manage=off
+yabai -m rule --add app="^Bitwarden$"                     manage=off
+yabai -m rule --add app="^Karabiner-Elements$"            manage=off
+yabai -m rule --add app="^Parallels Desktop Preferences$" manage=off
+yabai -m rule --add app="^Parallels Desktop$"             manage=off
+yabai -m rule --add app="^FortiClient$"                   manage=off
+yabai -m rule --add app="^ClickUp$"                       manage=off
+yabai -m rule --add app="^Zotero$"                        manage=off

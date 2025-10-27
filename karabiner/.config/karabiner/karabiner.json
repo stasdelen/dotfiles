@@ -2056,7 +2056,7 @@
                                 ],
                                 "description": "App: New Safari Window",
                                 "from": {
-                                    "key_code": "g",
+                                    "key_code": "s",
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [{ "shell_command": "osascript -e 'tell application \"Safari\" to make new document'" }],
@@ -2658,6 +2658,17 @@
                     }
                 ]
             },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_pointing_device": true,
+                        "product_id": 61166,
+                        "vendor_id": 6421
+                    },
+                    "ignore": false,
+                    "ignore_vendor_events": true
+                }
+            ],
             "name": "Default",
             "virtual_hid_keyboard": { "keyboard_type_v2": "iso" }
         }

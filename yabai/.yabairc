@@ -1,0 +1,77 @@
+#!/usr/bin/env sh
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 1) Load scripting addition (required for space manipulation & advanced features)
+# ──────────────────────────────────────────────────────────────────────────────
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"  # auto-reload SA on Dock restart :contentReference[oaicite:2]{index=2}
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 2) Global Settings
+# ──────────────────────────────────────────────────────────────────────────────
+yabai -m config mouse_follows_focus   on  # don’t auto-focus on hover :contentReference[oaicite:3]{index=3}  
+yabai -m config focus_follows_mouse   on  # don’t warp mouse on focus :contentReference[oaicite:4]{index=4}  
+yabai -m config window_origin_display default  # origin based on display layout :contentReference[oaicite:5]{index=5}  
+yabai -m config window_placement      second_child  # new windows as second child :contentReference[oaicite:6]{index=6}  
+# modifier for clicking and dragging with mouse
+yabai -m config mouse_modifier alt
+# set modifier + left-click drag to move window
+yabai -m config mouse_action1 move
+# set modifier + right-click drag to resize window
+yabai -m config mouse_action2 resize
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 3) Window Appearance
+# ──────────────────────────────────────────────────────────────────────────────
+yabai -m config window_shadow         on    # subtle shadows :contentReference[oaicite:7]{index=7}  
+yabai -m config window_topmost        off   # don’t keep on top :contentReference[oaicite:8]{index=8}  
+yabai -m config window_border         off   # disable borders :contentReference[oaicite:9]{index=9}  
+yabai -m config window_border_width   6     # (if borders on) :contentReference[oaicite:10]{index=10}  
+yabai -m config active_window_border_color   0xff775759  # focused border :contentReference[oaicite:11]{index=11}  
+yabai -m config normal_window_border_color   0xff555555  # unfocused border :contentReference[oaicite:12]{index=12}  
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 4) Space Layout & Padding
+# ──────────────────────────────────────────────────────────────────────────────
+yabai -m config layout            bsp  # binary space partitioning :contentReference[oaicite:13]{index=13}  
+yabai -m config split_ratio       0.50 # sibling split ratio :contentReference[oaicite:14]{index=14}  
+yabai -m config auto_balance      off  # manual resizing :contentReference[oaicite:15]{index=15}  
+
+# padding around windows
+yabai -m config top_padding       0  
+yabai -m config bottom_padding    0  
+yabai -m config left_padding      0  
+yabai -m config right_padding     0  
+yabai -m config window_gap        0  # gap between windows :contentReference[oaicite:16]{index=16}  
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 5) Application Rules
+# ──────────────────────────────────────────────────────────────────────────────
+yabai -m rule --add app="^System Preferences$"            manage=off  
+yabai -m rule --add app="^Archive Utility$"               manage=off  
+yabai -m rule --add app="^Logi Options+$"                 manage=off  
+yabai -m rule --add app="^Finder$"                        manage=off
+yabai -m rule --add app="^Photos$"                        manage=off
+yabai -m rule --add app="^Notes$"                         manage=off
+yabai -m rule --add app="^Reminders$"                     manage=off
+yabai -m rule --add app="^Mail$"                          manage=off
+yabai -m rule --add app="^Maps$"                          manage=off
+yabai -m rule --add app="^Spotify$"                       manage=off
+yabai -m rule --add app="WhatsApp"                        manage=off
+yabai -m rule --add app="^Messages$"                      manage=off
+yabai -m rule --add app="^Slack$"                         manage=off
+yabai -m rule --add app="^Calendar$"                      manage=off
+yabai -m rule --add app="^Preview$"                       manage=off
+yabai -m rule --add app="^Calculator$"                    manage=off
+yabai -m rule --add app="^Contacts$"                      manage=off
+yabai -m rule --add app="^FaceTime$"                      manage=off
+yabai -m rule --add app="^Activity Monitor$"              manage=off
+yabai -m rule --add app="^System Settings$"               manage=off
+yabai -m rule --add app="^App Store$"                     manage=off
+yabai -m rule --add app="^Bitwarden$"                     manage=off
+yabai -m rule --add app="^Karabiner-Elements$"            manage=off
+yabai -m rule --add app="^Parallels Desktop Preferences$" manage=off
+yabai -m rule --add app="^Parallels Desktop$"             manage=off
+yabai -m rule --add app="^FortiClient$"                   manage=off
+yabai -m rule --add app="^ClickUp$"                       manage=off
+yabai -m rule --add app="^Zotero$"                        manage=off

@@ -2666,7 +2666,9 @@
                         "vendor_id": 6421
                     },
                     "ignore": false,
-                    "ignore_vendor_events": true
+                    "ignore_vendor_events": true,
+                    "mouse_flip_vertical_wheel": true,
+                    "pointing_motion_wheels_multiplier": 0.0
                 }
             ],
             "name": "Default",

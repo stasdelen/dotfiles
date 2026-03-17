@@ -76,3 +76,5 @@ yabai -m rule --add app="^FortiClient$"                   manage=off
 yabai -m rule --add app="^ClickUp$"                       manage=off
 yabai -m rule --add app="^Zotero$"                        manage=off
 yabai -m rule --add app="^Windows App$"                   manage=off
+yabai -m rule --add app="^Docker Desktop$"                manage=off
+yabai -m rule --add app="^Claude$"                        manage=off
